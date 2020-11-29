@@ -1,0 +1,12 @@
+D:\Learning\CarDealer\CarDealer.Domain\bin\Debug\netcoreapp3.1\CarDealer.Domain.deps.json
+D:\Learning\CarDealer\CarDealer.Domain\bin\Debug\netcoreapp3.1\CarDealer.Domain.dll
+D:\Learning\CarDealer\CarDealer.Domain\bin\Debug\netcoreapp3.1\CarDealer.Domain.pdb
+D:\Learning\CarDealer\CarDealer.Domain\obj\Debug\netcoreapp3.1\CarDealer.Domain.csprojAssemblyReference.cache
+D:\Learning\CarDealer\CarDealer.Domain\obj\Debug\netcoreapp3.1\CarDealer.Domain.AssemblyInfoInputs.cache
+D:\Learning\CarDealer\CarDealer.Domain\obj\Debug\netcoreapp3.1\CarDealer.Domain.AssemblyInfo.cs
+D:\Learning\CarDealer\CarDealer.Domain\obj\Debug\netcoreapp3.1\CarDealer.Domain.dll
+D:\Learning\CarDealer\CarDealer.Domain\obj\Debug\netcoreapp3.1\CarDealer.Domain.pdb
+D:\Learning\CarDealer\CarDealer.Domain\bin\Debug\netcoreapp3.1\CarDealer.Domain.runtimeconfig.json
+D:\Learning\CarDealer\CarDealer.Domain\bin\Debug\netcoreapp3.1\CarDealer.Domain.runtimeconfig.dev.json
+D:\Learning\CarDealer\CarDealer.Domain\obj\Debug\netcoreapp3.1\CarDealer.Domain.genruntimeconfig.cache
+D:\Learning\CarDealer\CarDealer.Domain\obj\Debug\netcoreapp3.1\CarDealer.Domain.csproj.CoreCompileInputs.cache
