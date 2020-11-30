@@ -15,12 +15,10 @@ namespace CarDealerAPI.Controllers
     [ApiController]
     public class CarController : ControllerBase
     {
-        private CarDealerDbContext _context;
         private CarService _carService;
 
         public CarController(IRepositoryCarDealer repositoryCarDealer)
         {
-            _context = new CarDealerDbContext();
             _carService = new CarService(repositoryCarDealer);
         }
 
@@ -38,52 +36,57 @@ namespace CarDealerAPI.Controllers
         }
 
         [HttpGet]
-
         public async Task<ActionResult<ICollection<Car>>> GetCar()
         {
-            return await _context.Cars.ToListAsync();
+            return _carService.GetAll();
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Car>> GetCar(int id)
         {
-            var existingCar = await _context.Cars.FindAsync(id);
 
-            if (existingCar == null)
-            {
-                return NotFound();
-            }
+            return _carService.GetById(id);
+            //var existingCar = await _context.Cars.FindAsync(id);
 
-            return existingCar;
+            //if (existingCar == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //return existingCar;
         }
 
         [HttpPut]
-        public async Task<ActionResult<Car>> UpdateCar(Car car) 
+        public async Task<ActionResult<Car>> UpdateCar( Car car) 
         {
-            var existingCar = await _context.Cars.FindAsync(car.Id);
-            if (existingCar == null)
-            {
-                return NotFound();
-            }
 
-            existingCar = setProperties(car, existingCar);
+            return _carService.Update(car);
+            //var existingCar = await _context.Cars.FindAsync(car.Id);
+            //if (existingCar == null)
+            //{
+            //    return NotFound();
+            //}
 
-            await _context.SaveChangesAsync();
+            //existingCar = setProperties(car, existingCar);
 
-            return existingCar;
+            //await _context.SaveChangesAsync();
+
+            //return existingCar;
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<Car>> DeleteCar(int id) 
         {
-            var existingCar = await _context.Cars.FindAsync(id);
+            
+            
+            //var existingCar = await _context.Cars.FindAsync(id);
 
-            if (existingCar == null)
-            {
-                return NotFound();
-            }
-            _context.Cars.Remove(existingCar);
-            await _context.SaveChangesAsync();
+            //if (existingCar == null)
+            //{
+            //    return NotFound();
+            //}
+            //_context.Cars.Remove(existingCar);
+            //await _context.SaveChangesAsync();
 
             return NoContent();
         }
