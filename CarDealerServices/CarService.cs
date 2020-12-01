@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using CarDealer.Data;
 using CarDealer.Domain;
+using CarDealerServices.ServicesInterfaces;
 
 namespace CarDealerServices
 {
     
-    public class CarService
+    public class CarService: ICarService
     {
         private IRepositoryCarDealer CarRepository;
 

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CarDealer.Data;
-using CarDealer.Domain;
-using CarDealerServices;
-using Microsoft.AspNetCore.Http;
+﻿using CarDealer.Domain;
+using CarDealerServices.ServicesInterfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CarDealerAPI.Controllers
 {
@@ -15,24 +10,17 @@ namespace CarDealerAPI.Controllers
     [ApiController]
     public class CarController : ControllerBase
     {
-        private CarService _carService;
+        private ICarService _carService;
 
-        public CarController(IRepositoryCarDealer repositoryCarDealer)
+        public CarController(ICarService carService)
         {
-            _carService = new CarService(repositoryCarDealer);
+            _carService = carService;
         }
 
         [HttpPost]
         public async Task<ActionResult<Car>> PostCar(Car car)
         {
-
             return _carService.Create(car);
-
-            //_context.Cars.Add(car);
-            //await _context.SaveChangesAsync();
-
-            ////return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
-            //return car;
         }
 
         [HttpGet]
@@ -44,70 +32,20 @@ namespace CarDealerAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Car>> GetCar(int id)
         {
-
             return _carService.GetById(id);
-            //var existingCar = await _context.Cars.FindAsync(id);
-
-            //if (existingCar == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //return existingCar;
         }
 
         [HttpPut]
         public async Task<ActionResult<Car>> UpdateCar( Car car) 
         {
-
             return _carService.Update(car);
-            //var existingCar = await _context.Cars.FindAsync(car.Id);
-            //if (existingCar == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //existingCar = setProperties(car, existingCar);
-
-            //await _context.SaveChangesAsync();
-
-            //return existingCar;
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Car>> DeleteCar(int id) 
+        public async Task<ActionResult<bool>> DeleteCar(int id) 
         {
-            
-            
-            //var existingCar = await _context.Cars.FindAsync(id);
-
-            //if (existingCar == null)
-            //{
-            //    return NotFound();
-            //}
-            //_context.Cars.Remove(existingCar);
-            //await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private Car setProperties(Car car, Car existingCar) 
-        {
-            existingCar.Brand = car.Brand;
-            existingCar.Model = car.Model;
-            existingCar.Price = car.Price;
-            existingCar.Park = car.Brand;
-            existingCar.HorsePower = car.HorsePower;
-            existingCar.Color = car.Color;
-            existingCar.Year = car.Year;
-            existingCar.Km = car.Km;
-            existingCar.EngineSize = car.EngineSize;
-            existingCar.Fuel = car.Fuel;
-            existingCar.CarType = car.CarType;
-            existingCar.Condition = car.Condition;
-            existingCar.Doors = car.Doors;
-
-            return existingCar;
+            _carService.Delete(id);
+            return true;
         }
     }
 }
