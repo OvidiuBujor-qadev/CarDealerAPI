@@ -31,6 +31,9 @@ namespace CarDealerAPI
             services.AddScoped<IRepositoryCarDealer, CarDealerRepository>();
             services.AddDbContext<CarDealerDbContext>();
             services.AddScoped<ICarService, CarService>();
+            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IAddressService, AddressService>();
+            services.AddScoped<IInvoiceService, InvoiceService>();
             services.AddControllers();
         }
 
