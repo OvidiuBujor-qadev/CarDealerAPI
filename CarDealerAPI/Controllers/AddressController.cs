@@ -21,25 +21,25 @@ namespace CarDealerAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Address>> PostAddress(Address address)
+        public async Task<ActionResult<AddressModel>> PostAddress(AddressModel address)
         {
             return _addressService.Create(address);
         }
 
         [HttpGet]
-        public async Task<ActionResult<ICollection<Address>>> GetAddress()
+        public async Task<ActionResult<ICollection<AddressModel>>> GetAddress()
         {
             return _addressService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Address>> GetAddress(int id)
+        public async Task<ActionResult<AddressModel>> GetAddress(int id)
         {
             return _addressService.GetById(id);
         }
 
         [HttpPut]
-        public async Task<ActionResult<Address>> UpdateAddress(Address address)
+        public async Task<ActionResult<AddressModel>> UpdateAddress(AddressModel address)
         {
             return _addressService.Update(address);
         }

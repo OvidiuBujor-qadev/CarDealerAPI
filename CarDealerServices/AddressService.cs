@@ -15,34 +15,34 @@ namespace CarDealerServices
         {
             AddressRepository = _addressRepository;
         }
-        public Address Create(Address address)
+        public AddressModel Create(AddressModel address)
         {
-            Address CreateAddress = AddressRepository.Create<Address>(address);
+            AddressModel CreateAddress = AddressRepository.Create<AddressModel>(address);
             AddressRepository.SaveChanges();
             return CreateAddress;
         }
-        public List<Address> GetAll()
+        public List<AddressModel> GetAll()
         {
-            List<Address> GetAll = AddressRepository.Get<Address>();
+            List<AddressModel> GetAll = AddressRepository.Get<AddressModel>();
             return GetAll;
         }
 
-        public Address GetById(int Id)
+        public AddressModel GetById(int Id)
         {
-            Address GetById = AddressRepository.GetById<Address>(Id);
+            AddressModel GetById = AddressRepository.GetById<AddressModel>(Id);
             return GetById;
         }
 
-        public Address Update(Address address)
+        public AddressModel Update(AddressModel address)
         {
-            Address UpdateCar = AddressRepository.Update<Address>(address);
+            AddressModel UpdateAddress = AddressRepository.Update<AddressModel>(address);
             AddressRepository.SaveChanges();
-            return UpdateCar;
+            return UpdateAddress;
         }
 
         public void Delete(int Id)
         {
-            AddressRepository.Delete<Address>(Id);
+            AddressRepository.Delete<AddressModel>(Id);
         }
     }
 }

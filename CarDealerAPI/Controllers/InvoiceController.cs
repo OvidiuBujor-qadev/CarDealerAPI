@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CarDealer.Domain;
+using CarDealer.Domain.InputModels;
 using CarDealerServices;
 using CarDealerServices.ServicesInterfaces;
 using Microsoft.AspNetCore.Http;
@@ -22,25 +23,25 @@ namespace CarDealerAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Invoice>> PostInvoice(Invoice invoice)
+        public async Task<ActionResult<InvoiceModel>> PostInvoice(InvoiceModel invoice)
         {
             return _invoiceService.Create(invoice);
         }
 
         [HttpGet]
-        public async Task<ActionResult<ICollection<Invoice>>> GetInvoice()
+        public async Task<ActionResult<ICollection<InvoiceModel>>> GetInvoice()
         {
             return _invoiceService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Invoice>> GetInvoice(int id)
+        public async Task<ActionResult<InvoiceModel>> GetInvoice(int id)
         {
             return _invoiceService.GetById(id);
         }
 
         [HttpPut]
-        public async Task<ActionResult<Invoice>> UpdateInvoice(Invoice invoice)
+        public async Task<ActionResult<InvoiceModel>> UpdateInvoice(InvoiceModel invoice)
         {
             return _invoiceService.Update(invoice);
         }
@@ -50,6 +51,12 @@ namespace CarDealerAPI.Controllers
         {
             _invoiceService.Delete(id);
             return true;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<InvoiceModel>> PostInvoice(SoldCarModel soldCar) 
+        {
+            return _invoiceService.Sell(soldCar);
         }
     }
 }

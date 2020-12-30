@@ -8,10 +8,11 @@ namespace CarDealer.Data
 {
     public class CarDealerDbContext: DbContext
     {
-        public DbSet<Car> Cars { get; set; }
-        public DbSet<Invoice> Invoices { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Address> Addresses { get; set; }
+        public DbSet<CarModel> Cars { get; set; }
+        public DbSet<InvoiceModel> Invoices { get; set; }
+        public DbSet<CustomerModel> Customers { get; set; }
+        public DbSet<AddressModel> Addresses { get; set; }
+        public DbSet<OptionModel> Option { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {
@@ -20,9 +21,15 @@ namespace CarDealer.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Invoice>().HasOne(i => i.Customer)
+            modelBuilder.Entity<InvoiceModel>().HasOne(i => i.Customer)
                                           .WithMany(c => c.Invoices)
                                           .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<InvoiceOptionModel>().HasOne(io => io.Invoice)
+                                                .WithMany(i => i.InvoiceOption)
+                                                .HasForeignKey(io => io.InvoiceId);
+            modelBuilder.Entity<InvoiceOptionModel>().HasOne(io => io.Option)
+                                                .WithMany(o => o.InvoiceOptions)
+                                                .HasForeignKey(io => io.OptionId);
         }
     }
 }

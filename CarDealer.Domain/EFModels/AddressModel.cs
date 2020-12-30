@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CarDealer.Domain
 {
-    public class Address: ModelBase
+    public class AddressModel: ModelBase
     {
         [Required]
         public string Street { get; set; }
@@ -13,6 +13,6 @@ namespace CarDealer.Domain
         public string City { get; set; }
         public string County { get; set; }
         public int CustomerId { get; set; }
-        public Customer Customer { get; set; }
+        public CustomerModel Customer { get; set; }
     }
 }

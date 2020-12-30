@@ -6,18 +6,18 @@ using System.Text;
 
 namespace CarDealer.Domain
 {
-    public class Customer:ModelBase
+    public class CustomerModel:ModelBase
     {
-        public Customer() 
+        public CustomerModel() 
         {
-            Addresses = new Collection<Address>();
-            Invoices = new Collection<Invoice>();
+            Addresses = new Collection<AddressModel>();
+            Invoices = new Collection<InvoiceModel>();
         }
         [Required]
         public string LastName {get; set;}
         [Required]
         public string FirstName { get; set; }
-        public Collection<Address> Addresses { get; set; }
-        public Collection<Invoice> Invoices { get; set; }
+        public Collection<AddressModel> Addresses { get; set; }
+        public Collection<InvoiceModel> Invoices { get; set; }
     }
 }

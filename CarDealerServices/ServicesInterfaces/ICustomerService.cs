@@ -7,10 +7,10 @@ namespace CarDealerServices.ServicesInterfaces
 {
     public interface ICustomerService
     {
-        Customer Create(Customer customer);
-        List<Customer> GetAll();
-        Customer GetById(int Id);
-        Customer Update(Customer customer);
+        CustomerModel Create(CustomerModel customer);
+        List<CustomerModel> GetAll();
+        CustomerModel GetById(int Id);
+        CustomerModel Update(CustomerModel customer);
         void Delete(int Id);
     }
 }

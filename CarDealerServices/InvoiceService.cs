@@ -1,5 +1,6 @@
 ﻿using CarDealer.Data;
 using CarDealer.Domain;
+using CarDealer.Domain.InputModels;
 using CarDealerServices.ServicesInterfaces;
 using System;
 using System.Collections.Generic;
@@ -15,34 +16,63 @@ namespace CarDealerServices
         {
             InvoiceRepository = _invoiceRepository;
         }
-        public Invoice Create(Invoice invoice)
+        public InvoiceModel Create(InvoiceModel invoice)
         {
-            Invoice CreateInvoice = InvoiceRepository.Create<Invoice>(invoice);
+            InvoiceModel CreateInvoice = InvoiceRepository.Create<InvoiceModel>(invoice);
             InvoiceRepository.SaveChanges();
             return CreateInvoice;
         }
-        public List<Invoice> GetAll()
+        public List<InvoiceModel> GetAll()
         {
-            List<Invoice> GetAll = InvoiceRepository.Get<Invoice>();
+            List<InvoiceModel> GetAll = InvoiceRepository.Get<InvoiceModel>();
             return GetAll;
         }
 
-        public Invoice GetById(int Id)
+        public InvoiceModel GetById(int Id)
         {
-            Invoice GetById = InvoiceRepository.GetById<Invoice>(Id);
+            InvoiceModel GetById = InvoiceRepository.GetById<InvoiceModel>(Id);
             return GetById;
         }
 
-        public Invoice Update(Invoice invoice)
+        public InvoiceModel Update(InvoiceModel invoice)
         {
-            Invoice UpdateCar = InvoiceRepository.Update<Invoice>(invoice);
+            InvoiceModel UpdateInvoice = InvoiceRepository.Update<InvoiceModel>(invoice);
             InvoiceRepository.SaveChanges();
-            return UpdateCar;
+            return UpdateInvoice;
         }
-
         public void Delete(int Id)
         {
-            InvoiceRepository.Delete<Invoice>(Id);
+            InvoiceRepository.Delete<InvoiceModel>(Id);
+        }
+
+        public InvoiceModel Sell(SoldCarModel soldCar) 
+        {
+            //1. create invoice
+            InvoiceModel newInvoice = InvoiceRepository.Create<InvoiceModel>(new InvoiceModel { CustomerId = soldCar.CustomerId, AddressId = soldCar.AddressId, CarId = soldCar.Car.Id});
+            //3. Create option invoice (associate invoice id with options)
+            var InvoiceOptions = new List<InvoiceOptionModel>();
+            foreach (var option in soldCar.Options) 
+            {
+                InvoiceOptions.Add(InvoiceRepository.Create<InvoiceOptionModel>(new InvoiceOptionModel { OptionId = option.Id, InvoiceId = newInvoice.Id }));
+            }
+            //4. Add optionInvoice to Invoice
+            InvoiceRepository.SaveChanges();
+
+            foreach (var invoiceOption in InvoiceOptions) 
+            {
+                newInvoice.InvoiceOption.Add(invoiceOption);
+            }
+
+            //Mark car as sold
+
+            soldCar.Car.Sold = true;
+            InvoiceRepository.Update<CarModel>(soldCar.Car);
+
+            InvoiceRepository.SaveChanges();
+                        
+            return newInvoice;
+        // 5. save it all
+
         }
     }
 }

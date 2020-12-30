@@ -4,11 +4,11 @@ using System.Text;
 
 namespace CarDealer.Domain
 {
-    public class Car: ModelBase
+    public class CarModel: ModelBase
     {
         public string Brand { get; set; }
         public string Model { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
         public string Park { get; set; }
         public int HorsePower { get; set; }
         public string Color { get; set; }
@@ -19,5 +19,6 @@ namespace CarDealer.Domain
         public string CarType { get; set; }
         public string Condition { get; set; }
         public int Doors { get; set; }
+        public bool Sold { get; set; }
     }
 }

@@ -7,10 +7,10 @@ namespace CarDealerServices.ServicesInterfaces
 {
     public interface IAddressService
     {
-        Address Create(Address address);
-        List<Address> GetAll();
-        Address GetById(int Id);
-        Address Update(Address address);
+        AddressModel Create(AddressModel address);
+        List<AddressModel> GetAll();
+        AddressModel GetById(int Id);
+        AddressModel Update(AddressModel address);
         void Delete(int Id);
     }
 }
