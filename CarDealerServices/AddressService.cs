@@ -1,8 +1,10 @@
 ﻿using CarDealer.Data;
 using CarDealer.Domain;
 using CarDealerServices.ServicesInterfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CarDealerServices
@@ -15,34 +17,34 @@ namespace CarDealerServices
         {
             AddressRepository = _addressRepository;
         }
-        public AddressModel Create(AddressModel address)
+        public Address Create(Address address)
         {
-            AddressModel CreateAddress = AddressRepository.Create<AddressModel>(address);
+            Address CreateAddress = AddressRepository.Create<Address>(address);
             AddressRepository.SaveChanges();
             return CreateAddress;
         }
-        public List<AddressModel> GetAll()
+        public List<Address> GetAll()
         {
-            List<AddressModel> GetAll = AddressRepository.Get<AddressModel>();
+            List<Address> GetAll = AddressRepository.Get<Address>();
             return GetAll;
         }
 
-        public AddressModel GetById(int Id)
+        public Address GetById(int Id)
         {
-            AddressModel GetById = AddressRepository.GetById<AddressModel>(Id);
+            Address GetById = AddressRepository.GetById<Address>(Id);
             return GetById;
         }
 
-        public AddressModel Update(AddressModel address)
+        public Address Update(Address address)
         {
-            AddressModel UpdateAddress = AddressRepository.Update<AddressModel>(address);
+            Address UpdateAddress = AddressRepository.Update<Address>(address);
             AddressRepository.SaveChanges();
             return UpdateAddress;
         }
 
         public void Delete(int Id)
         {
-            AddressRepository.Delete<AddressModel>(Id);
+            AddressRepository.Delete<Address>(Id);
         }
     }
 }

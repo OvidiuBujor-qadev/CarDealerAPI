@@ -8,11 +8,11 @@ namespace CarDealerServices.ServicesInterfaces
 {
     public interface IInvoiceService
     {
-        InvoiceModel Create(InvoiceModel invoice);
-        List<InvoiceModel> GetAll();
-        InvoiceModel GetById(int Id);
-        InvoiceModel Update(InvoiceModel invoice);
+        Invoice Create(Invoice invoice);
+        List<Invoice> GetAll();
+        Invoice GetById(int Id);
+        Invoice Update(Invoice invoice);
         void Delete(int Id);
-        InvoiceModel Sell(SoldCarModel soldCar);
+        Invoice Sell(SoldCarModel soldCar);
     }
 }

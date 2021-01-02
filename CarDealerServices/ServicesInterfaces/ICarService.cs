@@ -7,10 +7,10 @@ namespace CarDealerServices.ServicesInterfaces
 {
     public interface ICarService
     {
-        CarModel Create(CarModel car);
-        List<CarModel> GetAll();
-        CarModel GetById(int Id);
-        CarModel Update(CarModel car);
+        Car Create(Car car);
+        List<Car> GetAll();
+        Car GetById(int Id);
+        Car Update(Car car);
         void Delete(int Id);
     }
 }

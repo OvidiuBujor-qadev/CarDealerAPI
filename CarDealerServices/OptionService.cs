@@ -15,34 +15,34 @@ namespace CarDealerServices
         {
             OptionRepository = _optionService;
         }
-        public OptionModel Create(OptionModel option)
+        public Option Create(Option option)
         {
-            OptionModel CreateOption = OptionRepository.Create<OptionModel>(option);
+            Option CreateOption = OptionRepository.Create<Option>(option);
             OptionRepository.SaveChanges();
             return CreateOption;
         }
-        public List<OptionModel> GetAll()
+        public List<Option> GetAll()
         {
-            List<OptionModel> GetAll = OptionRepository.Get<OptionModel>();
+            List<Option> GetAll = OptionRepository.Get<Option>();
             return GetAll;
         }
 
-        public OptionModel GetById(int Id)
+        public Option GetById(int Id)
         {
-            OptionModel GetById = OptionRepository.GetById<OptionModel>(Id);
+            Option GetById = OptionRepository.GetById<Option>(Id);
             return GetById;
         }
 
-        public OptionModel Update(OptionModel option)
+        public Option Update(Option option)
         {
-            OptionModel UpdateOption = OptionRepository.Update<OptionModel>(option);
+            Option UpdateOption = OptionRepository.Update<Option>(option);
             OptionRepository.SaveChanges();
             return UpdateOption;
         }
 
         public void Delete(int Id)
         {
-            OptionRepository.Delete<OptionModel>(Id);
+            OptionRepository.Delete<Option>(Id);
         }
     }
 }

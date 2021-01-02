@@ -18,7 +18,7 @@ namespace CarDealer.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("CarDealer.Domain.AddressModel", b =>
+            modelBuilder.Entity("CarDealer.Domain.Address", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,7 +51,7 @@ namespace CarDealer.Data.Migrations
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("CarDealer.Domain.CarModel", b =>
+            modelBuilder.Entity("CarDealer.Domain.Car", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,7 +108,7 @@ namespace CarDealer.Data.Migrations
                     b.ToTable("Cars");
                 });
 
-            modelBuilder.Entity("CarDealer.Domain.CustomerModel", b =>
+            modelBuilder.Entity("CarDealer.Domain.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -131,7 +131,7 @@ namespace CarDealer.Data.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("CarDealer.Domain.InvoiceModel", b =>
+            modelBuilder.Entity("CarDealer.Domain.Invoice", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -161,7 +161,7 @@ namespace CarDealer.Data.Migrations
                     b.ToTable("Invoices");
                 });
 
-            modelBuilder.Entity("CarDealer.Domain.InvoiceOptionModel", b =>
+            modelBuilder.Entity("CarDealer.Domain.InvoiceOption", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -183,10 +183,10 @@ namespace CarDealer.Data.Migrations
 
                     b.HasIndex("OptionId");
 
-                    b.ToTable("InvoiceOptionModel");
+                    b.ToTable("InvoiceOption");
                 });
 
-            modelBuilder.Entity("CarDealer.Domain.OptionModel", b =>
+            modelBuilder.Entity("CarDealer.Domain.Option", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -213,9 +213,9 @@ namespace CarDealer.Data.Migrations
                     b.ToTable("Option");
                 });
 
-            modelBuilder.Entity("CarDealer.Domain.AddressModel", b =>
+            modelBuilder.Entity("CarDealer.Domain.Address", b =>
                 {
-                    b.HasOne("CarDealer.Domain.CustomerModel", "Customer")
+                    b.HasOne("CarDealer.Domain.Customer", "Customer")
                         .WithMany("Addresses")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -224,21 +224,21 @@ namespace CarDealer.Data.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("CarDealer.Domain.InvoiceModel", b =>
+            modelBuilder.Entity("CarDealer.Domain.Invoice", b =>
                 {
-                    b.HasOne("CarDealer.Domain.AddressModel", "Address")
+                    b.HasOne("CarDealer.Domain.Address", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CarDealer.Domain.CarModel", "Car")
+                    b.HasOne("CarDealer.Domain.Car", "Car")
                         .WithMany()
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CarDealer.Domain.CustomerModel", "Customer")
+                    b.HasOne("CarDealer.Domain.Customer", "Customer")
                         .WithMany("Invoices")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -251,15 +251,15 @@ namespace CarDealer.Data.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("CarDealer.Domain.InvoiceOptionModel", b =>
+            modelBuilder.Entity("CarDealer.Domain.InvoiceOption", b =>
                 {
-                    b.HasOne("CarDealer.Domain.InvoiceModel", "Invoice")
+                    b.HasOne("CarDealer.Domain.Invoice", "Invoice")
                         .WithMany("InvoiceOption")
                         .HasForeignKey("InvoiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CarDealer.Domain.OptionModel", "Option")
+                    b.HasOne("CarDealer.Domain.Option", "Option")
                         .WithMany("InvoiceOptions")
                         .HasForeignKey("OptionId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -270,19 +270,19 @@ namespace CarDealer.Data.Migrations
                     b.Navigation("Option");
                 });
 
-            modelBuilder.Entity("CarDealer.Domain.CustomerModel", b =>
+            modelBuilder.Entity("CarDealer.Domain.Customer", b =>
                 {
                     b.Navigation("Addresses");
 
                     b.Navigation("Invoices");
                 });
 
-            modelBuilder.Entity("CarDealer.Domain.InvoiceModel", b =>
+            modelBuilder.Entity("CarDealer.Domain.Invoice", b =>
                 {
                     b.Navigation("InvoiceOption");
                 });
 
-            modelBuilder.Entity("CarDealer.Domain.OptionModel", b =>
+            modelBuilder.Entity("CarDealer.Domain.Option", b =>
                 {
                     b.Navigation("InvoiceOptions");
                 });

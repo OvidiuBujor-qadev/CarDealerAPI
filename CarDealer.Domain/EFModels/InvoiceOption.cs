@@ -4,11 +4,11 @@ using System.Text;
 
 namespace CarDealer.Domain
 {
-    public class InvoiceOptionModel : ModelBase
+    public class InvoiceOption : ModelBase
     {
         public int InvoiceId { get; set; }
-        public InvoiceModel Invoice { get; set; }
+        public Invoice Invoice { get; set; }
         public int OptionId { get; set; }
-        public OptionModel Option { get; set; }
+        public Option Option { get; set; }
     }
 }

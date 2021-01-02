@@ -15,34 +15,34 @@ namespace CarDealerServices
         {
             CustomerRepository = _customerService;
         }
-        public CustomerModel Create(CustomerModel customer)
+        public Customer Create(Customer customer)
         {
-            CustomerModel CreateCustomer = CustomerRepository.Create<CustomerModel>(customer);
+            Customer CreateCustomer = CustomerRepository.Create<Customer>(customer);
             CustomerRepository.SaveChanges();
             return CreateCustomer;
         }
-        public List<CustomerModel> GetAll()
+        public List<Customer> GetAll()
         {
-            List<CustomerModel> GetAll = CustomerRepository.Get<CustomerModel>();
+            List<Customer> GetAll = CustomerRepository.Get<Customer>();
             return GetAll;
         }
 
-        public CustomerModel GetById(int Id)
+        public Customer GetById(int Id)
         {
-            CustomerModel GetById = CustomerRepository.GetById<CustomerModel>(Id);
+            Customer GetById = CustomerRepository.GetById<Customer>(Id);
             return GetById;
         }
 
-        public CustomerModel Update(CustomerModel customer)
+        public Customer Update(Customer customer)
         {
-            CustomerModel UpdateCustomer = CustomerRepository.Update<CustomerModel>(customer);
+            Customer UpdateCustomer = CustomerRepository.Update<Customer>(customer);
             CustomerRepository.SaveChanges();
             return UpdateCustomer;
         }
 
         public void Delete(int Id)
         {
-            CustomerRepository.Delete<CustomerModel>(Id);
+            CustomerRepository.Delete<Customer>(Id);
         }
     }
 }

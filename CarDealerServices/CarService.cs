@@ -16,35 +16,35 @@ namespace CarDealerServices
             CarRepository = _carRepository;
         }
 
-        public CarModel Create(CarModel car) 
+        public Car Create(Car car) 
         {
-            CarModel CreateCar = CarRepository.Create(car);
+            Car CreateCar = CarRepository.Create(car);
             CarRepository.SaveChanges();
             return CreateCar;
         }
 
-        public List<CarModel> GetAll() 
+        public List<Car> GetAll() 
         {
-            List<CarModel> GetAll = CarRepository.Get<CarModel>();
+            List<Car> GetAll = CarRepository.Get<Car>();
             return GetAll;
         }
 
-        public CarModel GetById(int Id) 
+        public Car GetById(int Id) 
         {
-            CarModel GetById = CarRepository.GetById<CarModel>(Id);
+            Car GetById = CarRepository.GetById<Car>(Id);
             return GetById;
         }
 
-        public CarModel Update(CarModel car) 
+        public Car Update(Car car) 
         {
-            CarModel UpdateCar = CarRepository.Update<CarModel>(car);
+            Car UpdateCar = CarRepository.Update<Car>(car);
             CarRepository.SaveChanges();
             return UpdateCar;
         }
 
         public void Delete(int Id) 
         {
-            CarRepository.Delete<CarModel>(Id);
+            CarRepository.Delete<Car>(Id);
         }
 
     }

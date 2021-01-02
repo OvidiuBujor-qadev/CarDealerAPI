@@ -7,10 +7,10 @@ namespace CarDealerServices.ServicesInterfaces
 {
     public interface IOptionService
     {
-        OptionModel Create(OptionModel option);
-        List<OptionModel> GetAll();
-        OptionModel GetById(int Id);
-        OptionModel Update(OptionModel option);
+        Option Create(Option option);
+        List<Option> GetAll();
+        Option GetById(int Id);
+        Option Update(Option option);
         void Delete(int Id);
     }
 }

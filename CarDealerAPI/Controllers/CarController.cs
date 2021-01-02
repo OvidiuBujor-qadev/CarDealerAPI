@@ -18,25 +18,25 @@ namespace CarDealerAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CarModel>> PostCar(CarModel car)
+        public async Task<ActionResult<Car>> PostCar(Car car)
         {
             return _carService.Create(car);
         }
 
         [HttpGet]
-        public async Task<ActionResult<ICollection<CarModel>>> GetCar()
+        public async Task<ActionResult<ICollection<Car>>> GetCar()
         {
             return _carService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CarModel>> GetCar(int id)
+        public async Task<ActionResult<Car>> GetCar(int id)
         {
             return _carService.GetById(id);
         }
 
         [HttpPut]
-        public async Task<ActionResult<CarModel>> UpdateCar( CarModel car) 
+        public async Task<ActionResult<Car>> UpdateCar( Car car) 
         {
             return _carService.Update(car);
         }

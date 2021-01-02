@@ -21,25 +21,25 @@ namespace CarDealerAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CustomerModel>> PostCustomer(CustomerModel customer)
+        public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
         {
             return _customerService.Create(customer);
         }
 
         [HttpGet]
-        public async Task<ActionResult<ICollection<CustomerModel>>> GetCustomer()
+        public async Task<ActionResult<ICollection<Customer>>> GetCustomer()
         {
             return _customerService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CustomerModel>> GetCustomer(int id)
+        public async Task<ActionResult<Customer>> GetCustomer(int id)
         {
             return _customerService.GetById(id);
         }
 
         [HttpPut]
-        public async Task<ActionResult<CustomerModel>> UpdateCustomer(CustomerModel customer)
+        public async Task<ActionResult<Customer>> UpdateCustomer(Customer customer)
         {
             return _customerService.Update(customer);
         }

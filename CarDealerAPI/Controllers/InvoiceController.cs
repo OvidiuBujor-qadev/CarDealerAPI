@@ -23,25 +23,25 @@ namespace CarDealerAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<InvoiceModel>> PostInvoice(InvoiceModel invoice)
+        public async Task<ActionResult<Invoice>> PostInvoice(Invoice invoice)
         {
             return _invoiceService.Create(invoice);
         }
 
         [HttpGet]
-        public async Task<ActionResult<ICollection<InvoiceModel>>> GetInvoice()
+        public async Task<ActionResult<ICollection<Invoice>>> GetInvoice()
         {
             return _invoiceService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<InvoiceModel>> GetInvoice(int id)
+        public async Task<ActionResult<Invoice>> GetInvoice(int id)
         {
             return _invoiceService.GetById(id);
         }
 
         [HttpPut]
-        public async Task<ActionResult<InvoiceModel>> UpdateInvoice(InvoiceModel invoice)
+        public async Task<ActionResult<Invoice>> UpdateInvoice(Invoice invoice)
         {
             return _invoiceService.Update(invoice);
         }
@@ -52,9 +52,9 @@ namespace CarDealerAPI.Controllers
             _invoiceService.Delete(id);
             return true;
         }
-
+        [Route("api/SellCar")]
         [HttpPost]
-        public async Task<ActionResult<InvoiceModel>> PostInvoice(SoldCarModel soldCar) 
+        public async Task<ActionResult<Invoice>> SellCar(SoldCarModel soldCar) 
         {
             return _invoiceService.Sell(soldCar);
         }

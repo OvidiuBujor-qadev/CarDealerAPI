@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CarDealer.Domain
 {
-    public class CarModel: ModelBase
+    public class Car: ModelBase
     {
         public string Brand { get; set; }
         public string Model { get; set; }

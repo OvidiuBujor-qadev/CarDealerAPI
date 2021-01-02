@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CarDealer.Domain
 {
-    public enum OptCategoryModel
+    public enum OptCategoryEnum
     {
        None, 
        Interior,
