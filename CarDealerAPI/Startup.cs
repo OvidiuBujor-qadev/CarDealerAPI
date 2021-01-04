@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CarDealer.Data;
+using CarDealerServices;
+using CarDealerServices.ServicesInterfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +30,14 @@ namespace CarDealerAPI
         {
             services.AddScoped<IRepositoryCarDealer, CarDealerRepository>();
             services.AddDbContext<CarDealerDbContext>();
+            services.AddScoped<ICarService, CarService>();
+            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IAddressService, AddressService>();
+            services.AddScoped<IInvoiceService, InvoiceService>();
+            services.AddScoped<IOptionService, OptionService>(); 
             services.AddControllers();
+            services.AddControllersWithViews()
+                    .AddNewtonsoftJson(options =>options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
