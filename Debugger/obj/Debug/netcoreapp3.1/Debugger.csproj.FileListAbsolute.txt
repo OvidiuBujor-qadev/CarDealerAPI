@@ -64,3 +64,5 @@ D:\Learning\CarDealer\Debugger\obj\Debug\netcoreapp3.1\Debugger.csproj.CopyCompl
 D:\Learning\CarDealer\Debugger\obj\Debug\netcoreapp3.1\Debugger.dll
 D:\Learning\CarDealer\Debugger\obj\Debug\netcoreapp3.1\Debugger.pdb
 D:\Learning\CarDealer\Debugger\obj\Debug\netcoreapp3.1\Debugger.genruntimeconfig.cache
+D:\Learning\CarDealer\Debugger\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\Learning\CarDealer\Debugger\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

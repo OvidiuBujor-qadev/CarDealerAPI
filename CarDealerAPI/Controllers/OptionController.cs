@@ -1,4 +1,5 @@
 ﻿using CarDealer.Domain;
+using CarDealerBusiness.CarDealerDTO;
 using CarDealerServices.ServicesInterfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -18,25 +19,25 @@ namespace CarDealerAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Option>> PostOption(Option option)
+        public async Task<ActionResult<OptionDTO>> PostOption(Option option)
         {
             return _optionService.Create(option);
         }
 
         [HttpGet]
-        public async Task<ActionResult<ICollection<Option>>> GetOption()
+        public async Task<ActionResult<ICollection<OptionDTO>>> GetOption()
         {
             return _optionService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Option>> GetOption(int id)
+        public async Task<ActionResult<OptionDTO>> GetOption(int id)
         {
             return _optionService.GetById(id);
         }
 
         [HttpPut]
-        public async Task<ActionResult<Option>> UpdateOption(Option option)
+        public async Task<ActionResult<OptionDTO>> UpdateOption(Option option)
         {
             return _optionService.Update(option);
         }

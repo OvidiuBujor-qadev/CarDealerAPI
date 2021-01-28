@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Debugger", "Debugger\Debugg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealerAPI", "CarDealerAPI\CarDealerAPI.csproj", "{5C5249C0-1C8B-44F3-99FC-B41567C19EFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealerServices", "CarDealerServices\CarDealerServices.csproj", "{0B58586A-2EBA-4157-B1A3-BC8CE5A0694F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealerBusiness", "CarDealerServices\CarDealerBusiness.csproj", "{0B58586A-2EBA-4157-B1A3-BC8CE5A0694F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

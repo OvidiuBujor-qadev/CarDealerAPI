@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using AutoMapper;
 using CarDealer.Data;
 using CarDealer.Domain;
+using CarDealerBusiness.CarDealerDTO;
 using CarDealerServices.ServicesInterfaces;
 
 namespace CarDealerServices
@@ -9,37 +11,48 @@ namespace CarDealerServices
     
     public class CarService: ICarService
     {
+        private readonly IMapper _mapper;
         private IRepositoryCarDealer CarRepository;
 
-        public CarService(IRepositoryCarDealer _carRepository) 
+        public CarService(IRepositoryCarDealer _carRepository, IMapper mapper) 
         {
             CarRepository = _carRepository;
+            _mapper = mapper;
         }
 
-        public Car Create(Car car) 
+        public CarDTO Create(Car car) 
         {
-            Car CreateCar = CarRepository.Create(car);
+            Car createCar = CarRepository.Create(car);
+            CarDTO carDTO = _mapper.Map<CarDTO>(createCar);
             CarRepository.SaveChanges();
-            return CreateCar;
+            return carDTO;
         }
 
-        public List<Car> GetAll() 
+        public List<CarDTO> GetAll() 
         {
-            List<Car> GetAll = CarRepository.Get<Car>();
-            return GetAll;
+            List<Car> cars = CarRepository.Get<Car>();
+            var carsDTO = new List<CarDTO>();
+            foreach (var car in cars)
+            {
+                CarDTO carDTO = _mapper.Map<CarDTO>(car);
+                carsDTO.Add(carDTO);
+            }
+            return carsDTO;
         }
 
-        public Car GetById(int Id) 
+        public CarDTO GetById(int Id) 
         {
-            Car GetById = CarRepository.GetById<Car>(Id);
-            return GetById;
+            Car car = CarRepository.GetById<Car>(Id);
+            CarDTO carDTO = _mapper.Map<CarDTO>(car);
+            return carDTO;
         }
 
-        public Car Update(Car car) 
+        public CarDTO Update(Car car) 
         {
-            Car UpdateCar = CarRepository.Update<Car>(car);
+            Car updatedCar = CarRepository.Update<Car>(car);
+            CarDTO carDTO = _mapper.Map<CarDTO>(updatedCar);
             CarRepository.SaveChanges();
-            return UpdateCar;
+            return carDTO;
         }
 
         public void Delete(int Id) 

@@ -1,43 +1,54 @@
-﻿using CarDealer.Data;
+﻿using AutoMapper;
+using CarDealer.Data;
 using CarDealer.Domain;
+using CarDealerBusiness.CarDealerDTO;
 using CarDealerServices.ServicesInterfaces;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CarDealerServices
 {
     public class CustomerService: ICustomerService
     {
         private IRepositoryCarDealer CustomerRepository;
+        private readonly IMapper _mapper;
 
-        public CustomerService(IRepositoryCarDealer _customerService) 
+        public CustomerService(IRepositoryCarDealer _customerService, IMapper mapper) 
         {
             CustomerRepository = _customerService;
+            _mapper = mapper;
         }
-        public Customer Create(Customer customer)
+        public CustomerDTO Create(Customer customer)
         {
             Customer CreateCustomer = CustomerRepository.Create<Customer>(customer);
+            CustomerDTO customerDTO = _mapper.Map<CustomerDTO>(CreateCustomer);
             CustomerRepository.SaveChanges();
-            return CreateCustomer;
+            return customerDTO;
         }
-        public List<Customer> GetAll()
+        public List<CustomerDTO> GetAll()
         {
-            List<Customer> GetAll = CustomerRepository.Get<Customer>();
-            return GetAll;
+            List<Customer> customers = CustomerRepository.Get<Customer>();
+            var customersDTO = new List<CustomerDTO>();
+            foreach (var customer in customers)
+            {
+                CustomerDTO customerDTO = _mapper.Map<CustomerDTO>(customer);
+                customersDTO.Add(customerDTO);
+            }
+            return customersDTO;
         }
 
-        public Customer GetById(int Id)
+        public CustomerDTO GetById(int Id)
         {
-            Customer GetById = CustomerRepository.GetById<Customer>(Id);
-            return GetById;
+            Customer customer = CustomerRepository.GetById<Customer>(Id);
+            CustomerDTO customerDTO = _mapper.Map<CustomerDTO>(customer);
+            return customerDTO;
         }
 
-        public Customer Update(Customer customer)
+        public CustomerDTO Update(Customer customer)
         {
-            Customer UpdateCustomer = CustomerRepository.Update<Customer>(customer);
+            Customer updatedCustomer = CustomerRepository.Update<Customer>(customer);
+            CustomerDTO customerDTO = _mapper.Map<CustomerDTO>(updatedCustomer);
             CustomerRepository.SaveChanges();
-            return UpdateCustomer;
+            return customerDTO;
         }
 
         public void Delete(int Id)

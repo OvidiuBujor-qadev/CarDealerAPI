@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CarDealer.Domain;
+﻿using CarDealer.Domain;
 using CarDealer.Domain.InputModels;
-using CarDealerServices;
+using CarDealerBusiness.CarDealerDTO;
 using CarDealerServices.ServicesInterfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CarDealerAPI.Controllers
 {
@@ -23,25 +20,25 @@ namespace CarDealerAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Invoice>> PostInvoice(Invoice invoice)
+        public async Task<ActionResult<InvoiceDTO>> PostInvoice(Invoice invoice)
         {
             return _invoiceService.Create(invoice);
         }
 
         [HttpGet]
-        public async Task<ActionResult<ICollection<Invoice>>> GetInvoice()
+        public async Task<ActionResult<ICollection<InvoiceDTO>>> GetInvoice()
         {
             return _invoiceService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Invoice>> GetInvoice(int id)
+        public async Task<ActionResult<InvoiceDTO>> GetInvoice(int id)
         {
             return _invoiceService.GetById(id);
         }
 
         [HttpPut]
-        public async Task<ActionResult<Invoice>> UpdateInvoice(Invoice invoice)
+        public async Task<ActionResult<InvoiceDTO>> UpdateInvoice(Invoice invoice)
         {
             return _invoiceService.Update(invoice);
         }
@@ -54,7 +51,7 @@ namespace CarDealerAPI.Controllers
         }
         [Route("api/SellCar")]
         [HttpPost]
-        public async Task<ActionResult<Invoice>> SellCar(SoldCarModel soldCar) 
+        public async Task<ActionResult<InvoiceDTO>> SellCar(SoldCarModel soldCar) 
         {
             return _invoiceService.Sell(soldCar);
         }

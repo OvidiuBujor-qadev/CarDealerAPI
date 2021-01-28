@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CarDealer.Domain;
+﻿using CarDealer.Domain;
+using CarDealerBusiness.CarDealerDTO;
 using CarDealerServices.ServicesInterfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CarDealerAPI.Controllers
 {
@@ -21,25 +19,25 @@ namespace CarDealerAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
+        public async Task<ActionResult<CustomerDTO>> PostCustomer(Customer customer)
         {
             return _customerService.Create(customer);
         }
 
         [HttpGet]
-        public async Task<ActionResult<ICollection<Customer>>> GetCustomer()
+        public async Task<ActionResult<ICollection<CustomerDTO>>> GetCustomer()
         {
             return _customerService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Customer>> GetCustomer(int id)
+        public async Task<ActionResult<CustomerDTO>> GetCustomer(int id)
         {
             return _customerService.GetById(id);
         }
 
         [HttpPut]
-        public async Task<ActionResult<Customer>> UpdateCustomer(Customer customer)
+        public async Task<ActionResult<CustomerDTO>> UpdateCustomer(Customer customer)
         {
             return _customerService.Update(customer);
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using CarDealer.Data;
 using CarDealerServices;
 using CarDealerServices.ServicesInterfaces;
@@ -28,6 +29,8 @@ namespace CarDealerAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(Startup));
+            services.AddControllersWithViews();
             services.AddScoped<IRepositoryCarDealer, CarDealerRepository>();
             services.AddDbContext<CarDealerDbContext>();
             services.AddScoped<ICarService, CarService>();

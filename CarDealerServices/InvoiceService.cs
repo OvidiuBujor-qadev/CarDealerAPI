@@ -1,6 +1,8 @@
-﻿using CarDealer.Data;
+﻿using AutoMapper;
+using CarDealer.Data;
 using CarDealer.Domain;
 using CarDealer.Domain.InputModels;
+using CarDealerBusiness.CarDealerDTO;
 using CarDealerServices.ServicesInterfaces;
 using System;
 using System.Collections.Generic;
@@ -11,34 +13,45 @@ namespace CarDealerServices
     public class InvoiceService : IInvoiceService
     {
         private IRepositoryCarDealer InvoiceRepository;
+        private readonly IMapper _mapper;
 
-        public InvoiceService(IRepositoryCarDealer _invoiceRepository)
+        public InvoiceService(IRepositoryCarDealer _invoiceRepository, IMapper mapper)
         {
             InvoiceRepository = _invoiceRepository;
+            _mapper = mapper;
         }
-        public Invoice Create(Invoice invoice)
+        public InvoiceDTO Create(Invoice invoice)
         {
             Invoice CreateInvoice = InvoiceRepository.Create<Invoice>(invoice);
+            InvoiceDTO invoiceDTO = _mapper.Map<InvoiceDTO>(CreateInvoice);
             InvoiceRepository.SaveChanges();
-            return CreateInvoice;
+            return invoiceDTO;
         }
-        public List<Invoice> GetAll()
+        public List<InvoiceDTO> GetAll()
         {
-            List<Invoice> GetAll = InvoiceRepository.Get<Invoice>();
-            return GetAll;
+            List<Invoice> invoices = InvoiceRepository.Get<Invoice>();
+            var invoicesDTO = new List<InvoiceDTO>();
+            foreach (var invoice in invoices)
+            {
+                InvoiceDTO invoiceDTO = _mapper.Map<InvoiceDTO>(invoice);
+                invoicesDTO.Add(invoiceDTO);
+            }
+            return invoicesDTO;
         }
 
-        public Invoice GetById(int Id)
+        public InvoiceDTO GetById(int Id)
         {
-            Invoice GetById = InvoiceRepository.GetById<Invoice>(Id);
-            return GetById;
+            Invoice invoice = InvoiceRepository.GetById<Invoice>(Id);
+            InvoiceDTO invoiceDTO = _mapper.Map<InvoiceDTO>(invoice);
+            return invoiceDTO;
         }
 
-        public Invoice Update(Invoice invoice)
+        public InvoiceDTO Update(Invoice invoice)
         {
-            Invoice UpdateInvoice = InvoiceRepository.Update<Invoice>(invoice);
+            Invoice updatedInvoice = InvoiceRepository.Update<Invoice>(invoice);
+            InvoiceDTO invoiceDTO = _mapper.Map<InvoiceDTO>(updatedInvoice);
             InvoiceRepository.SaveChanges();
-            return UpdateInvoice;
+            return invoiceDTO;
         }
         public void Delete(int Id)
         {

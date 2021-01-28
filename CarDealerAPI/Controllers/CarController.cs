@@ -1,4 +1,5 @@
 ﻿using CarDealer.Domain;
+using CarDealerBusiness.CarDealerDTO;
 using CarDealerServices.ServicesInterfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -17,26 +18,29 @@ namespace CarDealerAPI.Controllers
             _carService = carService;
         }
 
+
         [HttpPost]
-        public async Task<ActionResult<Car>> PostCar(Car car)
+        public async Task<ActionResult<CarDTO>> PostCar(Car car)
         {
             return _carService.Create(car);
         }
 
         [HttpGet]
-        public async Task<ActionResult<ICollection<Car>>> GetCar()
+        public async Task<ActionResult<ICollection<CarDTO>>> GetCar()
         {
-            return _carService.GetAll();
+            var cars = _carService.GetAll();
+            return cars;
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Car>> GetCar(int id)
+        public async Task<ActionResult<CarDTO>> GetCar(int id)
         {
-            return _carService.GetById(id);
+            var car = _carService.GetById(id);
+            return car;
         }
 
         [HttpPut]
-        public async Task<ActionResult<Car>> UpdateCar( Car car) 
+        public async Task<ActionResult<CarDTO>> UpdateCar( Car car) 
         {
             return _carService.Update(car);
         }

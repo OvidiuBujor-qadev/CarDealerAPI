@@ -1,0 +1,14 @@
+D:\Learning\CarDealer\CarDealerServices\obj\Debug\netcoreapp3.1\CarDealerBusiness.csprojAssemblyReference.cache
+D:\Learning\CarDealer\CarDealerServices\obj\Debug\netcoreapp3.1\CarDealerBusiness.AssemblyInfoInputs.cache
+D:\Learning\CarDealer\CarDealerServices\obj\Debug\netcoreapp3.1\CarDealerBusiness.AssemblyInfo.cs
+D:\Learning\CarDealer\CarDealerServices\obj\Debug\netcoreapp3.1\CarDealerBusiness.csproj.CoreCompileInputs.cache
+D:\Learning\CarDealer\CarDealerServices\bin\Debug\netcoreapp3.1\CarDealerBusiness.deps.json
+D:\Learning\CarDealer\CarDealerServices\bin\Debug\netcoreapp3.1\CarDealerBusiness.dll
+D:\Learning\CarDealer\CarDealerServices\bin\Debug\netcoreapp3.1\CarDealerBusiness.pdb
+D:\Learning\CarDealer\CarDealerServices\bin\Debug\netcoreapp3.1\CarDealer.Data.dll
+D:\Learning\CarDealer\CarDealerServices\bin\Debug\netcoreapp3.1\CarDealer.Domain.dll
+D:\Learning\CarDealer\CarDealerServices\bin\Debug\netcoreapp3.1\CarDealer.Data.pdb
+D:\Learning\CarDealer\CarDealerServices\bin\Debug\netcoreapp3.1\CarDealer.Domain.pdb
+D:\Learning\CarDealer\CarDealerServices\obj\Debug\netcoreapp3.1\CarDealerBusiness.csproj.CopyComplete
+D:\Learning\CarDealer\CarDealerServices\obj\Debug\netcoreapp3.1\CarDealerBusiness.dll
+D:\Learning\CarDealer\CarDealerServices\obj\Debug\netcoreapp3.1\CarDealerBusiness.pdb

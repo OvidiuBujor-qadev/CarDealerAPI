@@ -1,45 +1,54 @@
-﻿using CarDealer.Data;
+﻿using AutoMapper;
+using CarDealer.Data;
 using CarDealer.Domain;
+using CarDealerBusiness.CarDealerDTO;
 using CarDealerServices.ServicesInterfaces;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CarDealerServices
 {
     public class AddressService:IAddressService
     {
+        private readonly IMapper _mapper;
         private IRepositoryCarDealer AddressRepository;
 
-        public AddressService(IRepositoryCarDealer _addressRepository) 
+        public AddressService(IRepositoryCarDealer _addressRepository, IMapper mapper) 
         {
             AddressRepository = _addressRepository;
+            _mapper = mapper;
         }
-        public Address Create(Address address)
+        public AddressDTO Create(Address address)
         {
             Address CreateAddress = AddressRepository.Create<Address>(address);
+            AddressDTO addressDTO = _mapper.Map<AddressDTO>(CreateAddress);
             AddressRepository.SaveChanges();
-            return CreateAddress;
+            return addressDTO;
         }
-        public List<Address> GetAll()
+        public List<AddressDTO> GetAll()
         {
-            List<Address> GetAll = AddressRepository.Get<Address>();
-            return GetAll;
+            List<Address> addresses = AddressRepository.Get<Address>();
+            var addressesDTO = new List<AddressDTO>();
+            foreach (var address in addresses)
+            {
+                AddressDTO addressDTO = _mapper.Map<AddressDTO>(address);
+                addressesDTO.Add(addressDTO);
+            }
+            return addressesDTO;
         }
 
-        public Address GetById(int Id)
+        public AddressDTO GetById(int Id)
         {
-            Address GetById = AddressRepository.GetById<Address>(Id);
-            return GetById;
+            Address address = AddressRepository.GetById<Address>(Id);
+            AddressDTO addressDTO = _mapper.Map<AddressDTO>(address);
+            return addressDTO;
         }
 
-        public Address Update(Address address)
+        public AddressDTO Update(Address address)
         {
-            Address UpdateAddress = AddressRepository.Update<Address>(address);
+            Address updatedAddress = AddressRepository.Update<Address>(address);
+            AddressDTO addressDTO = _mapper.Map<AddressDTO>(updatedAddress);
             AddressRepository.SaveChanges();
-            return UpdateAddress;
+            return addressDTO;
         }
 
         public void Delete(int Id)

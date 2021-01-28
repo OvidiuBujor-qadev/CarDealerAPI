@@ -1,43 +1,54 @@
-﻿using CarDealer.Data;
+﻿using AutoMapper;
+using CarDealer.Data;
 using CarDealer.Domain;
+using CarDealerBusiness.CarDealerDTO;
 using CarDealerServices.ServicesInterfaces;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CarDealerServices
 {
     public class OptionService: IOptionService
     {
         private IRepositoryCarDealer OptionRepository;
+        private readonly IMapper _mapper;
 
-        public OptionService(IRepositoryCarDealer _optionService)
+        public OptionService(IRepositoryCarDealer _optionService, IMapper mapper)
         {
             OptionRepository = _optionService;
+            _mapper = mapper;
         }
-        public Option Create(Option option)
+        public OptionDTO Create(Option option)
         {
-            Option CreateOption = OptionRepository.Create<Option>(option);
+            Option createOption = OptionRepository.Create<Option>(option);
+            OptionDTO optionDTO = _mapper.Map<OptionDTO>(createOption);
             OptionRepository.SaveChanges();
-            return CreateOption;
+            return optionDTO;
         }
-        public List<Option> GetAll()
+        public List<OptionDTO> GetAll()
         {
-            List<Option> GetAll = OptionRepository.Get<Option>();
-            return GetAll;
+            List<Option> options = OptionRepository.Get<Option>();
+            var optionsDTO = new List<OptionDTO>();
+            foreach (var option in options)
+            {
+                OptionDTO optionDTO = _mapper.Map<OptionDTO>(option);
+                optionsDTO.Add(optionDTO);
+            }
+            return optionsDTO;
         }
 
-        public Option GetById(int Id)
+        public OptionDTO GetById(int Id)
         {
-            Option GetById = OptionRepository.GetById<Option>(Id);
-            return GetById;
+            Option getById = OptionRepository.GetById<Option>(Id);
+            OptionDTO optionDTO = _mapper.Map<OptionDTO>(getById);
+            return optionDTO;
         }
 
-        public Option Update(Option option)
+        public OptionDTO Update(Option option)
         {
-            Option UpdateOption = OptionRepository.Update<Option>(option);
+            Option updateOption = OptionRepository.Update<Option>(option);
+            OptionDTO optionDTO = _mapper.Map<OptionDTO>(updateOption);
             OptionRepository.SaveChanges();
-            return UpdateOption;
+            return optionDTO;
         }
 
         public void Delete(int Id)

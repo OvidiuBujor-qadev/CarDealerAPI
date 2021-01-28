@@ -1,6 +1,5 @@
 D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\appsettings.json
-D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\CarDealerAPI.exe
 D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\CarDealerAPI.deps.json
 D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\CarDealerAPI.runtimeconfig.json
@@ -63,10 +62,13 @@ D:\Learning\CarDealer\CarDealerAPI\obj\Debug\netcoreapp3.1\CarDealerAPI.pdb
 D:\Learning\CarDealer\CarDealerAPI\obj\Debug\netcoreapp3.1\CarDealerAPI.genruntimeconfig.cache
 D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\Humanizer.dll
 D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
-D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\CarDealerServices.dll
-D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\CarDealerServices.pdb
 D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 D:\Learning\CarDealer\CarDealerAPI\obj\Debug\netcoreapp3.1\CarDealerAPI.csproj.CoreCompileInputs.cache
 D:\Learning\CarDealer\CarDealerAPI\obj\Debug\netcoreapp3.1\CarDealerAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\CarDealerBusiness.dll
+D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\CarDealerBusiness.pdb
+D:\Learning\CarDealer\CarDealerAPI\obj\Debug\netcoreapp3.1\scopedcss\bundle\CarDealerAPI.styles.css
