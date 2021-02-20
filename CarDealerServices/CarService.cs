@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using AutoMapper;
+﻿using AutoMapper;
 using CarDealer.Data;
 using CarDealer.Domain;
 using CarDealerBusiness.CarDealerDTO;
 using CarDealerServices.ServicesInterfaces;
+using System.Collections.Generic;
 
 namespace CarDealerServices
 {
-    
+
     public class CarService: ICarService
     {
         private readonly IMapper _mapper;
@@ -23,21 +22,21 @@ namespace CarDealerServices
         public CarDTO Create(Car car) 
         {
             Car createCar = CarRepository.Create(car);
-            CarDTO carDTO = _mapper.Map<CarDTO>(createCar);
             CarRepository.SaveChanges();
+            CarDTO carDTO = _mapper.Map<CarDTO>(createCar);
             return carDTO;
         }
 
         public List<CarDTO> GetAll() 
         {
             List<Car> cars = CarRepository.Get<Car>();
-            var carsDTO = new List<CarDTO>();
-            foreach (var car in cars)
-            {
-                CarDTO carDTO = _mapper.Map<CarDTO>(car);
-                carsDTO.Add(carDTO);
-            }
-            return carsDTO;
+            List<CarDTO> listCarsDTO = _mapper.Map<List<Car>, List<CarDTO>>(cars);
+            //foreach (var car in cars)
+            //{
+            //    CarDTO carDTO = _mapper.Map<CarDTO>(car);
+            //    carsDTO.Add(carDTO);
+            //}
+            return listCarsDTO;
         }
 
         public CarDTO GetById(int Id) 

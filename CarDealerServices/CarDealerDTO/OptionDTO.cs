@@ -5,7 +5,7 @@ namespace CarDealerBusiness.CarDealerDTO
 {
     public class OptionDTO
     {
-        public int OptionId { get; set; }
+        public int Id { get; set; }
         public decimal Price { get; set; }
         public string Name { get; set; }
         public OptCategoryEnum Category { get; set; }

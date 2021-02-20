@@ -5,7 +5,7 @@ namespace CarDealerBusiness.CarDealerDTO
 {
     public class CustomerDTO
     {
-        public int CustomerId { get; set; }
+        public int Id { get; set; }
         public CustomerDTO()
         {
             Addresses = new Collection<Address>();

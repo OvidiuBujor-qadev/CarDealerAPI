@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using CarDealer.Data;
+using CarDealerBusiness.CarDealerProfiles;
 using CarDealerServices;
 using CarDealerServices.ServicesInterfaces;
 using Microsoft.AspNetCore.Builder;
@@ -41,10 +42,29 @@ namespace CarDealerAPI
             services.AddControllers();
             services.AddControllersWithViews()
                     .AddNewtonsoftJson(options =>options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            var profiles = new List<Profile>();
+            profiles.Add(new CarProfile());
+            profiles.Add(new AddressProfile());
+            profiles.Add(new CustomerProfile());
+            profiles.Add(new InvoiceProfile());
+            profiles.Add(new OptionProfile());
+
+            var config = new MapperConfiguration(cfg => cfg.AddProfiles(profiles));
+
+            services.AddScoped(c => config.CreateMapper());
+
+            services.AddSwaggerGen(options =>
+            {options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                    {
+                    Title = "Swager",
+                    Description = "Swagger for CarDealer",
+                    Version = "v1"
+                    });
+            });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -65,6 +85,13 @@ namespace CarDealerAPI
                 var context = serviceScope.ServiceProvider.GetRequiredService<CarDealerDbContext>();
                 context.Database.Migrate();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(options => 
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger Demo API");
+            });
         }
     }
 }

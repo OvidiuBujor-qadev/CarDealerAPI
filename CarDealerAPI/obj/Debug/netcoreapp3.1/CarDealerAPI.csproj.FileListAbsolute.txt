@@ -72,3 +72,8 @@ D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\AutoMapper.Extensions
 D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\CarDealerBusiness.dll
 D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\CarDealerBusiness.pdb
 D:\Learning\CarDealer\CarDealerAPI\obj\Debug\netcoreapp3.1\scopedcss\bundle\CarDealerAPI.styles.css
+D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Learning\CarDealer\CarDealerAPI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Learning\CarDealer\CarDealerAPI\obj\Debug\netcoreapp3.1\CarDealerAPI.MvcApplicationPartsAssemblyInfo.cs

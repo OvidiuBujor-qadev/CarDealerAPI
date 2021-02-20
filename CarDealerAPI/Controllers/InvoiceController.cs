@@ -51,7 +51,7 @@ namespace CarDealerAPI.Controllers
         }
         [Route("api/SellCar")]
         [HttpPost]
-        public async Task<ActionResult<InvoiceDTO>> SellCar(SoldCarModel soldCar) 
+        public async Task<ActionResult<Invoice>> SellCar(SoldCarModel soldCar) 
         {
             return _invoiceService.Sell(soldCar);
         }

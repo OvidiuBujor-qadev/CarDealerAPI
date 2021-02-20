@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
 using CarDealer.Domain;
 using CarDealerBusiness.CarDealerDTO;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CarDealerBusiness.CarDealerProfiles
 {
@@ -12,6 +9,7 @@ namespace CarDealerBusiness.CarDealerProfiles
         public CarProfile() 
         {
             CreateMap<Car, CarDTO>();
+            CreateMap<CarDTO, Car>();
         }
     }
 }

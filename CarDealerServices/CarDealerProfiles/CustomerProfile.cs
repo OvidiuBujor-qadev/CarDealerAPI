@@ -11,7 +11,7 @@ namespace CarDealerBusiness.CarDealerProfiles
     {
         public CustomerProfile() 
         {
-            CreateMap<Customer, Customer_DTO>();
+            CreateMap<Customer, CustomerDTO>();
         }
     }
 }
